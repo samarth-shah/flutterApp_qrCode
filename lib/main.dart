@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'result.dart';
+import 'package:qr_code/screens/otp_sender.dart';
+import 'screens/result.dart';
 import 'package:barcode_scan_fix/barcode_scan.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,10 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ).copyWith(textTheme: GoogleFonts.quicksandTextTheme()),
+      //initialRoute: Otp.routeName,
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
         Results.routeName: (context) => Results(),
+        Otp.routeName: (context) => Otp(),
       },
     );
   }
@@ -33,27 +35,33 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF2D172D),
+        //backgroundColor: Colors.deepPurple.shade700,
         title: Text(
           'Freshers 2021',
         ),
         centerTitle: true,
       ),
       body: Container(
-        color: Color(0xFF1D0E1D),
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(50),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          //color: Color(0xFF1D0E1D),
+          image: DecorationImage(
+            image: AssetImage('assets/images/freshersPoster.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset(
-              'assets/images/freshersPoster.png',
-              fit: BoxFit.fitHeight,
-            ),
             SizedBox(
               height: 50,
             ),
             FlatButton(
-              color: Color(0xFF510A32),
+              //color: Color(0xFF510A32),
+              color: Color(0xFF333333),
               padding: EdgeInsets.all(15),
               onPressed: () async {
                 String codeScanner =
@@ -65,7 +73,8 @@ class HomePage extends StatelessWidget {
               child: Text(
                 "Scan QR Code",
                 style: TextStyle(
-                  color: Color(0xFFC72C41),
+                  //color: Color(0xFFC72C41),
+                  color: Colors.white,
                   fontSize: 20,
                 ),
               ),
@@ -75,6 +84,9 @@ class HomePage extends StatelessWidget {
                     // color: Color(0xFFC72C41),
                     ),
               ),
+            ),
+            SizedBox(
+              height: 75,
             ),
           ],
         ),

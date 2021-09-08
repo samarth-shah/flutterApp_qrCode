@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../dataReceiver.dart';
+import 'package:qr_code/screens/otp_sender.dart';
+import '../components/dataReceiver.dart';
 
 class Results extends StatefulWidget {
   static final routeName = '/results';
@@ -11,6 +12,8 @@ class Results extends StatefulWidget {
 
 class _ResultsState extends State<Results> {
   var userName = 'null';
+  var userNumber = '';
+  var resultBool = 'false';
 
   DataReceiver dataReceiver = new DataReceiver();
 
@@ -18,8 +21,10 @@ class _ResultsState extends State<Results> {
   void getNameFromApi() async {
     //todo: send arg to dataReceiver.passName() and then return name
     var name = await dataReceiver.passName();
+    var number = await dataReceiver.passNumber();
     setState(() {
       userName = name;
+      userNumber = number;
     });
   }
 
@@ -34,6 +39,7 @@ class _ResultsState extends State<Results> {
     final arg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF2D172D),
         title: Text(
           'Results',
           style: GoogleFonts.raleway(
@@ -50,19 +56,24 @@ class _ResultsState extends State<Results> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              /*RaisedButton(
-                onPressed: getNameFromApi,
-                child: Text('Get Name'),
-              ),
-              SizedBox(
-                height: 50,
-              ),*/
               Container(
                 child: Text(
                   userName,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                child: Text(
+                  userNumber,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 28,
                   ),
                 ),
               ),
@@ -84,7 +95,9 @@ class _ResultsState extends State<Results> {
               FlatButton(
                 color: Colors.green,
                 textColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
                 child: Text('Yes'),
               ),
               SizedBox(
@@ -93,7 +106,9 @@ class _ResultsState extends State<Results> {
               FlatButton(
                 color: Colors.redAccent,
                 textColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Otp.routeName);
+                },
                 child: Text('No'),
               ),
             ],
