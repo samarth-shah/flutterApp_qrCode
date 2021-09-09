@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String url = 'https://jsonplaceholder.typicode.com/users';
+String url = 'https://belly-bolly.herokuapp.com/';
 
 class DataReceiver {
   var decodedData;

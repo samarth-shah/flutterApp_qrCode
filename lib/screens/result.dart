@@ -93,23 +93,37 @@ class _ResultsState extends State<Results> {
                 height: 30,
               ),
               FlatButton(
+                height: 50,
+                minWidth: 120,
                 color: Colors.green,
                 textColor: Colors.white,
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Yes'),
+                child: Text(
+                  'Yes',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
               FlatButton(
+                height: 50,
+                minWidth: 120,
                 color: Colors.redAccent,
                 textColor: Colors.white,
                 onPressed: () {
                   Navigator.of(context).pushNamed(Otp.routeName);
                 },
-                child: Text('No'),
+                child: Text(
+                  'No',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               ),
             ],
           ),

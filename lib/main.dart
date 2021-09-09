@@ -4,6 +4,8 @@ import 'screens/result.dart';
 import 'package:barcode_scan_fix/barcode_scan.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//we can add animation
+
 void main() {
   runApp(MyApp());
 }
@@ -60,8 +62,9 @@ class HomePage extends StatelessWidget {
               height: 50,
             ),
             FlatButton(
-              //color: Color(0xFF510A32),
-              color: Color(0xFF333333),
+              //height: 180,
+              color: Color(0xCC510A32),
+              //color: Color(0xCC333333),
               padding: EdgeInsets.all(15),
               onPressed: () async {
                 String codeScanner =
