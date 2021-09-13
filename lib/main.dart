@@ -4,8 +4,6 @@ import 'screens/result.dart';
 import 'package:barcode_scan_fix/barcode_scan.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//we can add animation
-
 void main() {
   runApp(MyApp());
 }
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ).copyWith(textTheme: GoogleFonts.quicksandTextTheme()),
-      //initialRoute: Otp.routeName,
+      //initialRoute: Results.routeName,
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
