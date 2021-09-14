@@ -5,8 +5,8 @@ class DataReceiver {
   String url = 'https://belly-bolly.herokuapp.com';
   var decodedData;
   String _name = '';
-  String _number = '';
-  String _uCode = '';
+  var _number = '';
+  var _uCode = '';
   var _jwtCode = '';
 
   void getJwtCode(var code) {
@@ -44,18 +44,18 @@ class DataReceiver {
     print(getName());
   }
 
-  String passName() {
-    print(_name);
+  Future<String> passName() async {
+    await getName();
     return _name;
   }
 
-  String passNumber() {
-    print(_number);
+  Future<String> passNumber() async {
+    await getName();
     return _number;
   }
 
-  String passUCode() {
-    print(_uCode);
+  Future<String> passUCode() async {
+    await getName();
     return _uCode;
   }
 
@@ -68,7 +68,7 @@ class DataReceiver {
       },
       body: jsonEncode(<String, String>{
         'U_Code': '$_uCode',
-        'checkin': 'TRUE',
+        'res': 'TRUE',
       }),
     );
     return response;

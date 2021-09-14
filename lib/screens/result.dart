@@ -19,10 +19,10 @@ class _ResultsState extends State<Results> {
 
   DataReceiver dataReceiver = new DataReceiver();
 
-  void getNameFromApi() {
-    var name = dataReceiver.passName();
-    var number = dataReceiver.passNumber();
-    var ucode = dataReceiver.passUCode();
+  void getNameFromApi() async {
+    var name = await dataReceiver.passName();
+    var number = await dataReceiver.passNumber();
+    var ucode = await dataReceiver.passUCode();
     setState(() {
       userName = name;
       userNumber = number;
@@ -34,10 +34,14 @@ class _ResultsState extends State<Results> {
   Widget build(BuildContext context) {
     var arg = ModalRoute.of(context)!.settings.arguments as String;
     print(arg);
-    dataReceiver.getJwtCode(arg);
-    dataReceiver.getName();
-    getNameFromApi();
-    //flag = true;
+    if (!flag) {
+      dataReceiver.getJwtCode(arg);
+      dataReceiver.getName();
+      setState(() {
+        flag = true;
+      });
+      getNameFromApi();
+    }
     print('name = $userName number = $userNumber ucode = $uCode');
 
     return Scaffold(
@@ -92,6 +96,9 @@ class _ResultsState extends State<Results> {
                   print(uCode);
                   dataReceiver.passUcode();
                   Navigator.of(context).pop();
+                  setState(() {
+                    flag = false;
+                  });
                 },
                 child: Text(
                   'Yes',
@@ -110,6 +117,9 @@ class _ResultsState extends State<Results> {
                 textColor: Colors.white,
                 onPressed: () {
                   Navigator.of(context).pushNamed(Otp.routeName);
+                  setState(() {
+                    flag = false;
+                  });
                 },
                 child: Text(
                   'No',
