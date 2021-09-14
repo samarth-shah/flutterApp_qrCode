@@ -25,7 +25,6 @@ class _OtpState extends State<Otp> {
   }
 
   void generateOtp([int min = 1000, int max = 9999]) {
-    //Generates four digit OTP by default
     _minOtpValue = min;
     _maxOtpValue = max;
     _otp = _minOtpValue + Random().nextInt(_maxOtpValue - _minOtpValue);
@@ -37,8 +36,6 @@ class _OtpState extends State<Otp> {
       int min = 1000,
       int max = 9999,
       String countryCode = '+91']) {
-    // getNumber();
-    //function parameter 'message' is optional.
     generateOtp(min, max);
     SmsSender sender = new SmsSender();
     String address = countryCode + _phoneNumber;
@@ -47,20 +44,13 @@ class _OtpState extends State<Otp> {
   }
 
   bool resultChecker(String enteredOtp) {
-    //To validate OTP
     return enteredOtp == _otp.toString();
   }
 
   @override
-  void initState() {
-    super.initState();
-    //sendOtp();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //backgroundColor: Color(0xFF801336),
         backgroundColor: Color(0xFF2D172D),
         title: Text(
           'Fresh OTP',
@@ -70,11 +60,6 @@ class _OtpState extends State<Otp> {
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
-            /*image: DecorationImage(
-                image: AssetImage('assets/images/freshersPoster.png'),
-                fit: BoxFit.cover,
-              ),*/
-            //color: Color(0xFF510A36),
             color: Colors.black,
           ),
           padding: EdgeInsets.all(5),
@@ -154,7 +139,6 @@ class _OtpState extends State<Otp> {
                       readString = 'OTP verified !!';
                       flag = true;
                       fetchStr();
-                      //Navigator.of(context).pushReplacementNamed('/');
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     } else {

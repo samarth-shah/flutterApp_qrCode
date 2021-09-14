@@ -1,7 +1,7 @@
 name: qr_code
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -30,15 +30,4 @@ flutter:
 
   assets:
     - assets/images/freshersPoster.png
-  #   - images/a_dot_ham.jpeg
 
-#  fonts:
-#    - family: Schyler
-#      fonts:
-#        - asset: assets/fonts/PermanentMarker-Regular.ttf
-#        - asset: assets/fonts/Quicksand.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages

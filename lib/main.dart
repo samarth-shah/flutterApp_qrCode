@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fresh Pancakes 💜',
+      title: 'Freshers 2021',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF2D172D),
         title: Text(
-          'Freshers 2021',
+          'Fresh Pancakes 💜',
         ),
         centerTitle: true,
       ),
