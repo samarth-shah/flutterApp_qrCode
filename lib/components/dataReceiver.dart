@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class DataReceiver {
+  String url = 'https://belly-bolly.herokuapp.com';
   var decodedData;
   String _name = '';
   var _number = '';

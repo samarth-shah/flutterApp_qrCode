@@ -133,7 +133,6 @@ class _ResultsState extends State<Results> {
               Text(
                 arg,
                 style: TextStyle(
-                  //color: Colors.grey.shade900,0xFF2A142A
                   color: Color(0xFF2A112D),
                   fontSize: 6,
                 ),
