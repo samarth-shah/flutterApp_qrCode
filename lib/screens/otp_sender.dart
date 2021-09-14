@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sms/sms.dart';
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:qr_code/components/dataReceiver.dart';
-
-//if no then i will send number of that person and ask for otp if correct then i will send number as response and store checkedIn with number
 
 class Otp extends StatefulWidget {
   static final routeName = '/otp';
@@ -20,20 +19,17 @@ class _OtpState extends State<Otp> {
   late String _otpEntered, readString = ' ', _phoneNumber = '';
   late bool check = false, flag = false;
 
+  Future fetchStr() async {
+    await new Future.delayed(const Duration(seconds: 5), () {});
+    return 0;
+  }
+
   void generateOtp([int min = 1000, int max = 9999]) {
     //Generates four digit OTP by default
     _minOtpValue = min;
     _maxOtpValue = max;
     _otp = _minOtpValue + Random().nextInt(_maxOtpValue - _minOtpValue);
   }
-
-  /* void getNumber() async {
-    var number = await dataReceiver.passNumber();
-    setState(() {
-      _phoneNumber = number;
-    });
-    print(_phoneNumber);
-  }*/
 
   void sendOtp(
       [String phoneNumber = '',
@@ -157,6 +153,7 @@ class _OtpState extends State<Otp> {
                       check = true;
                       readString = 'OTP verified !!';
                       flag = true;
+                      fetchStr();
                       //Navigator.of(context).pushReplacementNamed('/');
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
@@ -186,7 +183,7 @@ class _OtpState extends State<Otp> {
                         fontSize: 34,
                         color: Colors.red,
                       ),
-                    )
+                    ),
             ],
           ),
         ),

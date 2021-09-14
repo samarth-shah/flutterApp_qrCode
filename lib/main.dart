@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ).copyWith(textTheme: GoogleFonts.quicksandTextTheme()),
-      //initialRoute: Results.routeName,
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
@@ -36,7 +35,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF2D172D),
-        //backgroundColor: Colors.deepPurple.shade700,
         title: Text(
           'Freshers 2021',
         ),
@@ -46,7 +44,6 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.all(50),
         decoration: BoxDecoration(
           color: Colors.black,
-          //color: Color(0xFF1D0E1D),
           image: DecorationImage(
             image: AssetImage('assets/images/freshersPoster.png'),
             fit: BoxFit.cover,
@@ -62,7 +59,6 @@ class HomePage extends StatelessWidget {
             FlatButton(
               //height: 180,
               color: Color(0xCC510A32),
-              //color: Color(0xCC333333),
               padding: EdgeInsets.all(15),
               onPressed: () async {
                 String codeScanner =
@@ -74,16 +70,12 @@ class HomePage extends StatelessWidget {
               child: Text(
                 "Scan QR Code",
                 style: TextStyle(
-                  //color: Color(0xFFC72C41),
                   color: Colors.white,
                   fontSize: 20,
                 ),
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
-                side: BorderSide(
-                    // color: Color(0xFFC72C41),
-                    ),
               ),
             ),
             SizedBox(
