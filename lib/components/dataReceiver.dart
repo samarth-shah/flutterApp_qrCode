@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String url = 'https://belly-bolly.herokuapp.com/';
-
 class DataReceiver {
+  String url = 'https://belly-bolly.herokuapp.com';
   var decodedData;
   String _name = '';
-  var _number = '';
-  var _uCode = '';
+  String _number = '';
+  String _uCode = '';
   var _jwtCode = '';
 
   void getJwtCode(var code) {
@@ -20,7 +19,7 @@ class DataReceiver {
     var uCode = '';
 
     final response = await http.post(
-      Uri.parse('http://70d1-103-240-207-116.ngrok.io/checkQREncode'),
+      Uri.parse('https://belly-bolly.herokuapp.com/checkQREncode'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -28,7 +27,7 @@ class DataReceiver {
         'jwtToken': '$_jwtCode',
       }),
     );
-
+    print(response.body);
     if (response.statusCode == 200) {
       decodedData = jsonDecode(response.body);
       userName = decodedData['Name'];
@@ -38,36 +37,32 @@ class DataReceiver {
     _name = userName;
     _number = num;
     _uCode = uCode;
-
-    // print('Name = $userName Number = $num Code = $uCode');
-
     return response;
   }
 
   void printDetails() {
-    //print('jwtCode: ' + _jwtCode);
     print(getName());
   }
 
-  Future<String> passName() async {
-    await getName();
+  String passName() {
+    print(_name);
     return _name;
   }
 
-  Future<String> passNumber() async {
-    await getName();
+  String passNumber() {
+    print(_number);
     return _number;
   }
 
-  Future<String> passUCode() async {
-    await getName();
+  String passUCode() {
+    print(_uCode);
     return _uCode;
   }
 
   Future<http.Response> passUcode() async {
     print('Ucode : $_uCode');
     final response = await http.post(
-      Uri.parse('http://70d1-103-240-207-116.ngrok.io/checkin'),
+      Uri.parse('https://belly-bolly.herokuapp.com/checkin'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -15,14 +15,14 @@ class _ResultsState extends State<Results> {
   var userNumber = '';
   var resultBool = 'false';
   var uCode = '';
+  bool flag = false;
 
   DataReceiver dataReceiver = new DataReceiver();
 
-  void getNameFromApi() async {
-    //todo: send arg to dataReceiver.passName() and then return name
-    var name = await dataReceiver.passName();
-    var number = await dataReceiver.passNumber();
-    var ucode = await dataReceiver.passUCode();
+  void getNameFromApi() {
+    var name = dataReceiver.passName();
+    var number = dataReceiver.passNumber();
+    var ucode = dataReceiver.passUCode();
     setState(() {
       userName = name;
       userNumber = number;
@@ -32,15 +32,13 @@ class _ResultsState extends State<Results> {
 
   @override
   Widget build(BuildContext context) {
-    //token is stored in arg
-    /*var tempArg =
-    */
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJOYW1lIjoiSGFyZGlrIFJhdmFsIiwiVV9Db2RlIjoiRlAwMDEiLCJDb250YWN0IE5vIjo5NjYyNjMxNTE1fQ._MlQYALMmTqcUM320ggGa_GV0233r42HKlMCjgyclfk';
     var arg = ModalRoute.of(context)!.settings.arguments as String;
+    print(arg);
     dataReceiver.getJwtCode(arg);
     dataReceiver.getName();
-    print('name = $userName number = $userNumber ucode = $uCode');
     getNameFromApi();
+    //flag = true;
+    print('name = $userName number = $userNumber ucode = $uCode');
 
     return Scaffold(
       appBar: AppBar(
