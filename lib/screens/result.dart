@@ -36,7 +36,6 @@ class _ResultsState extends State<Results> {
     print(arg);
     if (!flag) {
       dataReceiver.getJwtCode(arg);
-      dataReceiver.getName();
       setState(() {
         flag = true;
       });
@@ -128,6 +127,17 @@ class _ResultsState extends State<Results> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                arg,
+                style: TextStyle(
+                  //color: Colors.grey.shade900,
+                  color: Color(0xFF2A112D),
+                  fontSize: 6,
+                ),
+              )
             ],
           ),
         ),
