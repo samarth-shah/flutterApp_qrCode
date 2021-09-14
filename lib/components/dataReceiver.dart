@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String url = 'https://belly-bolly.herokuapp.com/';
-
 class DataReceiver {
   var decodedData;
   String _name = '';
@@ -20,7 +18,7 @@ class DataReceiver {
     var uCode = '';
 
     final response = await http.post(
-      Uri.parse('http://70d1-103-240-207-116.ngrok.io/checkQREncode'),
+      Uri.parse('https://belly-bolly.herokuapp.com/checkQREncode'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -28,7 +26,7 @@ class DataReceiver {
         'jwtToken': '$_jwtCode',
       }),
     );
-
+    print(response.body);
     if (response.statusCode == 200) {
       decodedData = jsonDecode(response.body);
       userName = decodedData['Name'];
@@ -38,14 +36,10 @@ class DataReceiver {
     _name = userName;
     _number = num;
     _uCode = uCode;
-
-    // print('Name = $userName Number = $num Code = $uCode');
-
     return response;
   }
 
   void printDetails() {
-    //print('jwtCode: ' + _jwtCode);
     print(getName());
   }
 
@@ -67,13 +61,13 @@ class DataReceiver {
   Future<http.Response> passUcode() async {
     print('Ucode : $_uCode');
     final response = await http.post(
-      Uri.parse('http://70d1-103-240-207-116.ngrok.io/checkin'),
+      Uri.parse('https://belly-bolly.herokuapp.com/checkin'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
         'U_Code': '$_uCode',
-        'checkin': 'TRUE',
+        'res': 'TRUE',
       }),
     );
     return response;

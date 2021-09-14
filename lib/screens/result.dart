@@ -15,11 +15,11 @@ class _ResultsState extends State<Results> {
   var userNumber = '';
   var resultBool = 'false';
   var uCode = '';
+  bool flag = false;
 
   DataReceiver dataReceiver = new DataReceiver();
 
   void getNameFromApi() async {
-    //todo: send arg to dataReceiver.passName() and then return name
     var name = await dataReceiver.passName();
     var number = await dataReceiver.passNumber();
     var ucode = await dataReceiver.passUCode();
@@ -32,15 +32,16 @@ class _ResultsState extends State<Results> {
 
   @override
   Widget build(BuildContext context) {
-    //token is stored in arg
-    /*var tempArg =
-    */
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJOYW1lIjoiSGFyZGlrIFJhdmFsIiwiVV9Db2RlIjoiRlAwMDEiLCJDb250YWN0IE5vIjo5NjYyNjMxNTE1fQ._MlQYALMmTqcUM320ggGa_GV0233r42HKlMCjgyclfk';
     var arg = ModalRoute.of(context)!.settings.arguments as String;
-    dataReceiver.getJwtCode(arg);
-    dataReceiver.getName();
+    print(arg);
+    if (!flag) {
+      dataReceiver.getJwtCode(arg);
+      setState(() {
+        flag = true;
+      });
+      getNameFromApi();
+    }
     print('name = $userName number = $userNumber ucode = $uCode');
-    getNameFromApi();
 
     return Scaffold(
       appBar: AppBar(
@@ -94,6 +95,9 @@ class _ResultsState extends State<Results> {
                   print(uCode);
                   dataReceiver.passUcode();
                   Navigator.of(context).pop();
+                  setState(() {
+                    flag = false;
+                  });
                 },
                 child: Text(
                   'Yes',
@@ -112,6 +116,9 @@ class _ResultsState extends State<Results> {
                 textColor: Colors.white,
                 onPressed: () {
                   Navigator.of(context).pushNamed(Otp.routeName);
+                  setState(() {
+                    flag = false;
+                  });
                 },
                 child: Text(
                   'No',
@@ -120,6 +127,17 @@ class _ResultsState extends State<Results> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                arg,
+                style: TextStyle(
+                  //color: Colors.grey.shade900,0xFF2A142A
+                  color: Color(0xFF2A112D),
+                  fontSize: 6,
+                ),
+              )
             ],
           ),
         ),
