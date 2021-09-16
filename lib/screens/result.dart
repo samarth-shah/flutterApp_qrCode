@@ -16,7 +16,7 @@ class _ResultsState extends State<Results> {
   var resultBool = 'false';
   var uCode = '';
   bool flag = false;
-  bool isLoading=true;
+  bool isLoading = true;
 
   DataReceiver dataReceiver = new DataReceiver();
 
@@ -26,7 +26,7 @@ class _ResultsState extends State<Results> {
     var ucode = await dataReceiver.passUCode();
 
     setState(() {
-      isLoading=false;
+      isLoading = false;
       userName = name;
       userNumber = number;
       uCode = ucode;
@@ -53,9 +53,9 @@ class _ResultsState extends State<Results> {
           'Results',
           style: GoogleFonts.raleway(
               textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              )),
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          )),
         ),
         centerTitle: true,
       ),
@@ -65,31 +65,33 @@ class _ResultsState extends State<Results> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              isLoading?CircularProgressIndicator(color: Colors.white,):Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        userName,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
+              isLoading
+                  ? CircularProgressIndicator(
+                      color: Colors.white,
+                    )
+                  : Column(children: [
+                      Container(
+                        child: Text(
+                          userName,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                          ),
                         ),
                       ),
-                    ),
-
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      child: Text(
-                        userNumber,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        child: Text(
+                          userNumber,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
+                    ]),
               SizedBox(
                 height: 30,
               ),
@@ -151,3 +153,4 @@ class _ResultsState extends State<Results> {
     );
   }
 }
+

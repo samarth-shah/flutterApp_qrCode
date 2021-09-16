@@ -68,7 +68,7 @@ class DataReceiver {
       },
       body: jsonEncode(<String, String>{
         'U_Code': '$_uCode',
-        'res': 'TRUE',
+        'checkin': 'TRUE',
       }),
     );
     return response;
