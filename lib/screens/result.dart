@@ -124,7 +124,8 @@ class _ResultsState extends State<Results> {
                 color: Colors.redAccent,
                 textColor: Colors.white,
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Otp.routeName);
+                  // Navigator.of(context).pushNamed(Otp.routeName);
+                  Navigator.of(context).pop();
                   setState(() {
                     flag = false;
                   });
